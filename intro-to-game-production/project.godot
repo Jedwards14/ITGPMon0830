@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Introduction to Game Production Project"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="uid://nd26owgfw4it"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
