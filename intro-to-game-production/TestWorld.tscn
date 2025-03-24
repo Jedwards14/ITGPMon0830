@@ -1,14 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://nd26owgfw4it"]
+[gd_scene load_steps=8 format=3 uid="uid://nd26owgfw4it"]
 
 [ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_74u7v"]
 [ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://static_body_3d.tscn" id="2_cjeqb"]
 [ext_resource type="PackedScene" uid="uid://cpj6lqggbvtiq" path="res://Chair.fbx" id="3_y4ur2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74u7v"]
+size = Vector3(1, 0.507813, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cjeqb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4ur2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lktsm"]
 size = Vector3(48.2826, 1, 72.301)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03713, 6.79917, -5.54793)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571, -3.86699, 12.8641)
+
+[node name="Chair" parent="StaticBody3D" instance=ExtResource("3_y4ur2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.21467, -2.32019e-17, 0, 2.34188e-17, 1, 0, 0, 0, 0.615976, 0, 0.155907, -0.00393915)
+shape = SubResource("BoxShape3D_74u7v")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, -4.73431e-14, 7.91208e-14, -6.44759e-14, 0.708205, 0.0434971, -4.80013e-13, -0.193756, 0.158988, 0.00294113, 0.617922, -0.294235)
+shape = SubResource("BoxShape3D_cjeqb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, 0.540733, 0.476773, 0)
+shape = SubResource("BoxShape3D_y4ur2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, -0.547553, 0.476773, 0)
+shape = SubResource("BoxShape3D_y4ur2")
 
 [node name="player" parent="." instance=ExtResource("1_74u7v")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95639e-05, 0.288727, 8.88906)
@@ -20,10 +48,11 @@ fov = 85.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.906617, 0.421954, 0, -0.421954, 0.906617, -0.482311, 3.79714, 7.65122)
+light_color = Color(0.943652, 0.913104, 0.617963, 1)
 light_energy = 1.049
 light_indirect_energy = 13.253
 light_volumetric_fog_energy = 11.819
-light_angular_distance = 25.9
+light_angular_distance = 0.86
 shadow_enabled = true
 shadow_bias = 5.035
 shadow_normal_bias = 0.975
@@ -41,13 +70,10 @@ transform = Transform3D(-0.999957, -2.9975e-05, 0.00928442, 0, 0.999995, 0.00322
 transform = Transform3D(10.5247, 1.27329e-11, -3.72529e-09, 2.91038e-11, 0.988295, 5.58794e-09, 2.23517e-08, -2.32831e-09, 4.30843, -2.98023e-08, -14.4009, -4.76837e-07)
 shape = SubResource("BoxShape3D_lktsm")
 
-[node name="Chair" parent="." instance=ExtResource("3_y4ur2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430571, -3.86699, 12.8641)
-
 [node name="wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.91083)
 
 [node name="StaticBody3D" parent="wall" instance=ExtResource("2_cjeqb")]
-transform = Transform3D(-0.00717637, -0.87055, -0.43531, -0.322022, 0.0239363, 1.15632e-09, -0.00346997, -0.420934, 0.900281, -3.1607, 2.83426, 3.44473)
+transform = Transform3D(0.000466768, -8.30111, -0.246588, -0.0854282, -0.0508211, 0.000428783, 0.000186026, -2.50962, 0.815636, -3.1607, -2.06909, 3.44473)
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
