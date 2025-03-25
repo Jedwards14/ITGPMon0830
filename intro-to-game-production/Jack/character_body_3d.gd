@@ -4,7 +4,7 @@ extends CharacterBody3D
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 @export var sensivity = 0.3
-
+ 
 var target_velocity = Vector3.ZERO
 
 func _ready():
@@ -20,13 +20,13 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 
 	if Input.is_action_pressed("move_right"):
-		direction.x += 1
+		direction += transform.basis.x
 	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
+		direction -= transform.basis.x
 	if Input.is_action_pressed("move_backward"):
-		direction.z += 1
+		direction += transform.basis.z
 	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
+		direction -= transform.basis.z
 
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
