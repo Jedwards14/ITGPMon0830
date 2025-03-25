@@ -23,7 +23,7 @@ transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571
 [node name="Chair" parent="StaticBody3D" instance=ExtResource("3_y4ur2")]
 
 [node name="Collbase" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1.21467, -2.32019e-17, 0, 2.34188e-17, 1, 0, 0, 0, 0.615976, 0, 0.155907, -0.00393915)
+transform = Transform3D(1.21467, -1.92799e-17, 0, 2.34188e-17, 1, 0, 0, 0, 0.615976, 0, 0.155907, -0.00393915)
 shape = SubResource("BoxShape3D_74u7v")
 
 [node name="Collback" type="CollisionShape3D" parent="StaticBody3D"]
