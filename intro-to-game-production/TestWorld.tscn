@@ -22,19 +22,19 @@ transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571
 
 [node name="Chair" parent="StaticBody3D" instance=ExtResource("3_y4ur2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collbase" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1.21467, -2.32019e-17, 0, 2.34188e-17, 1, 0, 0, 0, 0.615976, 0, 0.155907, -0.00393915)
 shape = SubResource("BoxShape3D_74u7v")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collback" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, -4.73431e-14, 7.91208e-14, -6.44759e-14, 0.708205, 0.0434971, -4.80013e-13, -0.193756, 0.158988, 0.00294113, 0.617922, -0.294235)
 shape = SubResource("BoxShape3D_cjeqb")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collright" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, 0.540733, 0.476773, 0)
 shape = SubResource("BoxShape3D_y4ur2")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="colleft" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, -0.547553, 0.476773, 0)
 shape = SubResource("BoxShape3D_y4ur2")
 
