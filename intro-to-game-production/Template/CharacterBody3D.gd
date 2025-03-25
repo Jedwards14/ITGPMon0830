@@ -55,6 +55,6 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	if body.name=="player":
-		get_tree().change_scene_to_file("res://node_3d.tscn")
+		get_tree().change_scene_to_file("res://Jack/Jack_Test.tscn")
 
 	pass # Replace with function body.
