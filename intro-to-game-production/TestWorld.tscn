@@ -18,7 +18,7 @@ size = Vector3(48.2826, 1, 72.301)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03713, 6.79917, -5.54793)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571, -3.86699, 12.8641)
+transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571, -3.86699, 5.19216)
 
 [node name="Chair" parent="StaticBody3D" instance=ExtResource("3_y4ur2")]
 
@@ -70,10 +70,16 @@ transform = Transform3D(-0.999957, -2.9975e-05, 0.00928442, 0, 0.999995, 0.00322
 transform = Transform3D(10.5247, 1.27329e-11, -3.72529e-09, 2.91038e-11, 0.988295, 5.58794e-09, 2.23517e-08, -2.32831e-09, 4.30843, -2.98023e-08, -14.4009, -4.76837e-07)
 shape = SubResource("BoxShape3D_lktsm")
 
-[node name="wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.91083)
+[node name="wallright" parent="." instance=ExtResource("2_cjeqb")]
+transform = Transform3D(7.16859e-05, -8.65751, -0.00352404, -0.041074, -0.0151101, 0, 2.74005e-07, -0.0330925, 0.921963, 8.1391, -2.98372, 8.62821)
 
-[node name="StaticBody3D" parent="wall" instance=ExtResource("2_cjeqb")]
-transform = Transform3D(0.000466768, -8.30111, -0.246588, -0.0854282, -0.0508211, 0.000428783, 0.000186026, -2.50962, 0.815636, -3.1607, -2.06909, 3.44473)
+[node name="wallback" parent="." instance=ExtResource("2_cjeqb")]
+transform = Transform3D(-2.75195e-08, 0.00332463, -1.00636, -0.041074, -0.0151095, 5.1721e-11, 7.16864e-05, -8.65726, -0.00038636, 0.8544, -2.97211, 1.93446)
+
+[node name="wallleft" parent="." instance=ExtResource("2_cjeqb")]
+transform = Transform3D(7.16775e-05, -8.65648, -0.0145943, -0.041074, -0.0151101, 4.7384e-11, 1.13476e-06, -0.137046, 0.921854, -6.28369, -2.98372, 8.76364)
+
+[node name="wallfront" parent="." instance=ExtResource("2_cjeqb")]
+transform = Transform3D(-7.18163e-07, 0.0865172, -0.996071, -0.0410742, -0.0150725, 1.47478e-11, 7.16831e-05, -8.63561, -0.00997922, 0.91132, -2.99515, 15.4751)
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
