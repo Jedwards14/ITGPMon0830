@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://nd26owgfw4it"]
+[gd_scene load_steps=11 format=3 uid="uid://nd26owgfw4it"]
 
 [ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_74u7v"]
-[ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://static_body_3d.tscn" id="2_cjeqb"]
-[ext_resource type="PackedScene" uid="uid://cpj6lqggbvtiq" path="res://Chair.fbx" id="3_y4ur2"]
+[ext_resource type="PackedScene" uid="uid://jjgnsucv6eg0" path="res://chair.tscn" id="1_cjeqb"]
+[ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://meshtexture_orange.tscn" id="2_cjeqb"]
+[ext_resource type="PackedScene" uid="uid://d4i621ecicm8c" path="res://meshtexture_lime.tscn" id="4_cjeqb"]
+[ext_resource type="PackedScene" uid="uid://cywjcyaajkbbh" path="res://meshtexture_yellow.tscn" id="5_y4ur2"]
+[ext_resource type="PackedScene" uid="uid://bjsrr0tnkf25f" path="res://meshtexture_pink.tscn" id="6_8re3b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_74u7v"]
 size = Vector3(1, 0.507813, 1)
@@ -17,26 +20,26 @@ size = Vector3(48.2826, 1, 72.301)
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03713, 6.79917, -5.54793)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, -1.81899e-12, 0, 1.81899e-12, 1, 0, 0, 0, 1, 0.430571, -3.86699, 5.19216)
+[node name="chair" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.999363, 1.81783e-12, 0.0356843, 1.81899e-12, 1, 0, -0.0356843, 6.49094e-14, -0.999363, 1.41864, -3.79416, 12.9873)
 
-[node name="Chair" parent="StaticBody3D" instance=ExtResource("3_y4ur2")]
-
-[node name="Collbase" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collbase" type="CollisionShape3D" parent="chair"]
 transform = Transform3D(1.21467, -1.92799e-17, 0, 2.34188e-17, 1, 0, 0, 0, 0.615976, 0, 0.155907, -0.00393915)
 shape = SubResource("BoxShape3D_74u7v")
 
-[node name="Collback" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collback" type="CollisionShape3D" parent="chair"]
 transform = Transform3D(1, -4.73431e-14, 7.91208e-14, -6.44759e-14, 0.708205, 0.0434971, -4.80013e-13, -0.193756, 0.158988, 0.00294113, 0.617922, -0.294235)
 shape = SubResource("BoxShape3D_cjeqb")
 
-[node name="Collright" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Collright" type="CollisionShape3D" parent="chair"]
 transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, 0.540733, 0.476773, 0)
 shape = SubResource("BoxShape3D_y4ur2")
 
-[node name="colleft" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="colleft" type="CollisionShape3D" parent="chair"]
 transform = Transform3D(0.147097, -4.87891e-19, 0, 2.1684e-19, 0.357914, 0, 0, 0, 0.418467, -0.547553, 0.476773, 0)
 shape = SubResource("BoxShape3D_y4ur2")
+
+[node name="Chair2" parent="chair" instance=ExtResource("1_cjeqb")]
 
 [node name="player" parent="." instance=ExtResource("1_74u7v")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95639e-05, 0.288727, 8.88906)
@@ -60,9 +63,6 @@ shadow_transmittance_bias = -16.0
 shadow_opacity = 0.9
 shadow_blur = 0.0
 
-[node name="ground" parent="." instance=ExtResource("2_cjeqb")]
-transform = Transform3D(0.340957, 0, 0, 0, 6.72869, -0.0126542, 0, 0.0896072, 0.950214, 0.836611, -3.97833, 8.65911)
-
 [node name="respawn collision" type="Area3D" parent="."]
 transform = Transform3D(-0.999957, -2.9975e-05, 0.00928442, 0, 0.999995, 0.00322851, -0.00928447, 0.00322837, -0.999952, 0.0372552, 3.18482, 3.69186)
 
@@ -81,5 +81,14 @@ transform = Transform3D(7.16775e-05, -8.65648, -0.0145943, -0.041074, -0.0151101
 
 [node name="wallfront" parent="." instance=ExtResource("2_cjeqb")]
 transform = Transform3D(-7.18163e-07, 0.0865172, -0.996071, -0.0410742, -0.0150725, 1.47478e-11, 7.16831e-05, -8.63561, -0.00997922, 0.91132, -2.99515, 15.4751)
+
+[node name="Floor" parent="." instance=ExtResource("4_cjeqb")]
+transform = Transform3D(0.344006, 0, 0, 0, 0.742107, 0, 0, 0, 0.998043, 0.851119, -3.81816, 8.70106)
+
+[node name="pillar" parent="." instance=ExtResource("5_y4ur2")]
+transform = Transform3D(0.0580596, 0, 0, 0, 359.754, 0, 0, 0, 0.140881, -3.49041, 0, 7.12205)
+
+[node name="pillar2" parent="." instance=ExtResource("6_8re3b")]
+transform = Transform3D(-0.0366199, 0, 0, 0, 457.753, 0, 0, 0, 0.128007, 5.36744, -0.991085, 12.1242)
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
