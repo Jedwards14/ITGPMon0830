@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Introduction to Game Production Project"
-run/main_scene="uid://nd26owgfw4it"
+run/main_scene="uid://b8h1lh8pwgevx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 
