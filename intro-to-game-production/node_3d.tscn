@@ -142,6 +142,6 @@ theme_override_fonts/font = SubResource("SystemFont_jka67")
 theme_override_styles/hover_pressed_mirrored = ExtResource("3_jka67")
 theme_override_styles/hover = ExtResource("3_r3fl7")
 theme_override_styles/normal = ExtResource("4_jka67")
-text = "Restart"
+text = "Restart (R)"
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
