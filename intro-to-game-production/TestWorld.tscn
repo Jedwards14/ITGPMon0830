@@ -41,15 +41,15 @@ shape = SubResource("BoxShape3D_y4ur2")
 
 [node name="Chair2" parent="chair" instance=ExtResource("1_cjeqb")]
 
-[node name="player" parent="." instance=ExtResource("1_74u7v")]
+[node name="player2" parent="." instance=ExtResource("1_74u7v")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95639e-05, -2.91194, 8.88906)
 
-[node name="Camera" type="Camera3D" parent="player"]
+[node name="Camera" type="Camera3D" parent="player2"]
 transform = Transform3D(0.999957, 2.99752e-05, -0.00928451, 0, 0.999995, 0.00322851, 0.00928456, -0.00322837, 0.999952, -0.0689928, 0.029552, -0.276869)
 current = true
 fov = 85.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player2"]
 transform = Transform3D(1, 0, 0, 0, 0.906617, 0.421954, 0, -0.421954, 0.906617, -0.482311, 3.79714, 7.65122)
 light_color = Color(0.943652, 0.913104, 0.617963, 1)
 light_energy = 1.049
@@ -91,26 +91,4 @@ transform = Transform3D(0.0580596, 0, 0, 0, 359.754, 0, 0, 0, 0.140881, -3.49041
 [node name="pillar2" parent="." instance=ExtResource("6_8re3b")]
 transform = Transform3D(-0.0366199, 0, 0, 0, 457.753, 0, 0, 0, 0.128007, 5.36744, -0.991085, 12.1242)
 
-[node name="player2" parent="." instance=ExtResource("1_74u7v")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.95639e-05, -2.91194, 8.88906)
-
-[node name="Camera" type="Camera3D" parent="player2"]
-transform = Transform3D(0.999957, 2.99752e-05, -0.00928451, 0, 0.999995, 0.00322851, 0.00928456, -0.00322837, 0.999952, -0.0689928, 0.029552, -0.276869)
-current = true
-fov = 85.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="player2"]
-transform = Transform3D(1, 0, 0, 0, 0.906617, 0.421954, 0, -0.421954, 0.906617, -0.482311, 3.79714, 7.65122)
-light_color = Color(0.943652, 0.913104, 0.617963, 1)
-light_energy = 1.049
-light_indirect_energy = 13.253
-light_volumetric_fog_energy = 11.819
-light_angular_distance = 0.86
-shadow_enabled = true
-shadow_bias = 5.035
-shadow_normal_bias = 0.975
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.9
-shadow_blur = 0.0
-
-[connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="respawn collision" to="player2" method="_on_area_3d_body_entered"]
