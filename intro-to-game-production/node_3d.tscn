@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dru60kpstsqwb"]
+[gd_scene load_steps=15 format=3 uid="uid://dru60kpstsqwb"]
 
 [ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_7xctj"]
 [ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://static_body_3d.tscn" id="2_doeps"]
 [ext_resource type="StyleBox" uid="uid://d1ds81j2jxf8r" path="res://restart_button_hover_press.tres" id="3_jka67"]
 [ext_resource type="StyleBox" uid="uid://do0q3lsdh774n" path="res://restart_button_hover.tres" id="3_r3fl7"]
 [ext_resource type="StyleBox" uid="uid://blc53jrtrurjy" path="res://restart_button_base.tres" id="4_jka67"]
+[ext_resource type="Script" uid="uid://ds7dp4wecfq12" path="res://button_keyboard_press.gd" id="6_i5arm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sac6i"]
 sky_top_color = Color(0.0745098, 0.486275, 0.658824, 1)
@@ -133,7 +134,7 @@ shape = SubResource("BoxShape3D_at5sp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
 offset_left = 951.0
 offset_top = 597.0
 offset_right = 1151.0
@@ -143,5 +144,8 @@ theme_override_styles/hover_pressed_mirrored = ExtResource("3_jka67")
 theme_override_styles/hover = ExtResource("3_r3fl7")
 theme_override_styles/normal = ExtResource("4_jka67")
 text = "Restart (R)"
+script = ExtResource("6_i5arm")
+button_path = NodePath(".")
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="player" method="_on_restart_button_pressed"]

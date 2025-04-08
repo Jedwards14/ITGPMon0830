@@ -58,3 +58,8 @@ func _on_area_3d_body_entered(body):
 		get_tree().change_scene_to_file("res://node_3d.tscn")
 
 	pass # Replace with function body.
+
+
+func _on_restart_button_pressed() -> void:
+	print("Restarting the game...")
+	get_tree().reload_current_scene()  # This will restart the current scene.
