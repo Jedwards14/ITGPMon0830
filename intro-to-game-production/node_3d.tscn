@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://dru60kpstsqwb"]
+[gd_scene load_steps=18 format=3 uid="uid://dru60kpstsqwb"]
 
 [ext_resource type="PackedScene" uid="uid://br01chminlckq" path="res://player.tscn" id="1_7xctj"]
+[ext_resource type="Script" uid="uid://c856ixru12jp7" path="res://node_3d.gd" id="1_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://ck3weatx4ste5" path="res://static_body_3d.tscn" id="2_doeps"]
 [ext_resource type="StyleBox" uid="uid://d1ds81j2jxf8r" path="res://restart_button_hover_press.tres" id="3_jka67"]
 [ext_resource type="StyleBox" uid="uid://do0q3lsdh774n" path="res://restart_button_hover.tres" id="3_r3fl7"]
 [ext_resource type="StyleBox" uid="uid://blc53jrtrurjy" path="res://restart_button_base.tres" id="4_jka67"]
 [ext_resource type="Script" uid="uid://ds7dp4wecfq12" path="res://button_keyboard_press.gd" id="6_i5arm"]
+[ext_resource type="PackedScene" uid="uid://brv2tdsrskc0m" path="res://pr_02_cube.tscn" id="8_4arys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sac6i"]
 sky_top_color = Color(0.0745098, 0.486275, 0.658824, 1)
@@ -59,8 +61,14 @@ roughness = 0.0
 
 [sub_resource type="SystemFont" id="SystemFont_jka67"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
+albedo_color = Color(0.542279, 0.403997, 0.927879, 1)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("existing_cube")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79957, 7.66016, -1.26396)
+script = ExtResource("1_jsk3o")
+cube_scene = ExtResource("8_4arys")
+existing_cube = NodePath("PR02 Cube")
 
 [node name="player" parent="." instance=ExtResource("1_7xctj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.271791, 0.328384, 8.84499)
@@ -71,19 +79,19 @@ current = true
 fov = 85.0
 
 [node name="ground" parent="." instance=ExtResource("2_doeps")]
-transform = Transform3D(0.340957, 0, 0, 0, 6.72869, -0.0126542, 0, 0.0896072, 0.950214, 1.10963, -4.15891, 8.62519)
+transform = Transform3D(1, 0, 0, 0, 0.999911, -0.013316, 0, 0.013316, 0.999911, 1.10963, -4.15891, 8.62519)
 
 [node name="wall" parent="." instance=ExtResource("2_doeps")]
-transform = Transform3D(-9.61721e-09, -28.6191, 0, 0.219995, -1.25086e-06, -0.0134407, 0.0030719, -1.74664e-08, 0.962554, 7.625, 0.66939, 8.62519)
+transform = Transform3D(-4.37114e-08, -1, -6.95929e-16, 0.999903, -4.37071e-08, -0.0139621, 0.0139621, -6.10305e-10, 0.999903, 7.625, 0.66939, 8.62519)
 
 [node name="wall2" parent="." instance=ExtResource("2_doeps")]
-transform = Transform3D(-9.61721e-09, -28.6191, 0, 0.219995, -1.25086e-06, -0.0134407, 0.0030719, -1.74664e-08, 0.962554, -5.72662, 0.66939, 8.62519)
+transform = Transform3D(-4.37114e-08, -1, -6.95929e-16, 0.999903, -4.37071e-08, -0.0139621, 0.0139621, -6.10305e-10, 0.999903, -5.72662, 0.66939, 8.62519)
 
 [node name="wall3" parent="." instance=ExtResource("2_doeps")]
-transform = Transform3D(0.00291316, 1.23352e-06, 0.922454, 0.208626, -1.25086e-06, -0.0128807, 8.99288e-09, 28.6191, -4.03218e-08, 0.303371, 0.414102, 3.8034)
+transform = Transform3D(0.0139622, 4.31011e-08, 0.999903, 0.999903, -4.37071e-08, -0.0139622, 4.31011e-08, 1, -4.37071e-08, 0.303371, 0.414102, 3.8034)
 
 [node name="roof" parent="." instance=ExtResource("2_doeps")]
-transform = Transform3D(0.303583, 0, 0, 0, 18.0417, 0, 0, 0, 0.936042, 0.467865, 5.0464, 8.85962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.467865, 5.0464, 8.85962)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tq4cp")
@@ -146,6 +154,10 @@ theme_override_styles/normal = ExtResource("4_jka67")
 text = "Restart (R)"
 script = ExtResource("6_i5arm")
 button_path = NodePath(".")
+
+[node name="PR02 Cube" parent="." instance=ExtResource("8_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 10)
+surface_material_override/0 = SubResource("StandardMaterial3D_jsk3o")
 
 [connection signal="body_entered" from="respawn collision" to="player" method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="player" method="_on_restart_button_pressed"]
